@@ -1,16 +1,28 @@
-import React from 'react';
+import React, { useState }from 'react';
 import { View, Text, StyleSheet} from 'react-native';
 import SearchBar from '../components/SearchBar';
 
 const SearchScreen = () => {
+
+    const [term, setTerm] = useState('');
+
     return(
         <View>
-            <SearchBar />
-            <Text>Search Screen2</Text>
+            <SearchBar 
+            term={term}
+            onTermChange={newTerm => setTerm(newTerm)}
+            onTermSubmit={() => console.log('term was submitted')}
+            />
+                <Text>Search Screen</Text>
+                <Text>{term}</Text>
         </View>
     )
 }
 
-const styles = StyleSheet.create({});
+const styles = StyleSheet.create({
+    background: {
+        backgroundColor: '#fff'
+    }
+});
 
 export default SearchScreen;
